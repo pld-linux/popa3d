@@ -18,6 +18,7 @@ Requires(pre):	/bin/id
 Requires(pre):	/usr/sbin/useradd
 Requires(postun):	/usr/sbin/userdel
 Requires:	FHS >= 2.1-24
+Requires:	pam >= 0.77.3
 Provides:	pop3daemon
 Obsoletes:	pop3daemon
 Obsoletes:	imap-pop
