@@ -6,6 +6,7 @@ Release:	2
 License:	distributable (see LICENSE for details)
 Group:		Networking/Daemons
 Source0:	http://www.openwall.com/popa3d/%{name}-%{version}.tar.gz
+# Source0-md5:	cceb80f90d0fc1f85fdb5cf7472afe9e
 Source1:	%{name}.pamd
 Source2:	%{name}.inetd
 Patch0:		%{name}-params.patch
