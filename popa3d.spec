@@ -2,7 +2,7 @@ Summary:	POP3 server
 Summary(pl):	Serwer POP3
 Name:		popa3d
 Version:	0.5.1
-Release:	1
+Release:	2
 License:	distributable (see LICENSE for details)
 Group:		Networking/Daemons
 Source0:	http://www.openwall.com/popa3d/%{name}-%{version}.tar.gz
@@ -15,6 +15,7 @@ PreReq:		rc-inetd
 Requires(pre):	/bin/id
 Requires(pre):	/usr/sbin/useradd
 Requires(postun):	/usr/sbin/userdel
+Requires:	FHS >= 2.1-24
 Provides:	pop3daemon
 Obsoletes:	pop3daemon
 Obsoletes:	imap-pop
@@ -98,5 +99,4 @@ fi
 %attr(640,root,root) %config(noreplace) %verify(not size mtime md5) /etc/pam.d/popa3d
 %attr(640,root,root) %config(noreplace) %verify(not size mtime md5) /etc/security/blacklist.popa3d
 %attr(640,root,root) %config(noreplace) %verify(not size mtime md5) /etc/sysconfig/rc-inetd/popa3d
-%attr(755,root,root) %dir /var/lib/popa3d-empty
 %{_mandir}/man8/*
