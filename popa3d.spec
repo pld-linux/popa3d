@@ -1,15 +1,14 @@
 Summary:	POP3 server
 Summary(pl):	Serwer POP3
 Name:		popa3d
-Version:	0.6.2
-Release:	2
+Version:	0.6.3
+Release:	1
 License:	distributable (see LICENSE for details)
 Group:		Networking/Daemons
 Source0:	http://www.openwall.com/popa3d/%{name}-%{version}.tar.gz
 Source1:	%{name}.pamd
 Source2:	%{name}.inetd
 Patch0:		%{name}-params.patch
-Patch1:		%{name}-user.patch
 URL:		http://www.openwall.com/popa3d/
 BuildRequires:	pam-devel
 PreReq:		rc-inetd
@@ -42,7 +41,6 @@ Obs³uguje tylko skrzynki w formacie mailbox.
 %prep
 %setup -q
 %patch0 -p1
-%patch1 -p1
 
 %build
 %{__make} \
@@ -70,13 +68,13 @@ install %{SOURCE2} $RPM_BUILD_ROOT/etc/sysconfig/rc-inetd/popa3d
 rm -rf $RPM_BUILD_ROOT
 
 %pre
-if [ -n "`id -u vpopmail 2>/dev/null`" ]; then
-	if [ "`id -u vpopmail`" != "60" ]; then
-		echo "Error: user vpopmail doesn't have uid=60. Correct this before installing popa3d." 1>&2
+if [ -n "`id -u popa3d 2>/dev/null`" ]; then
+	if [ "`id -u popa3d`" != "60" ]; then
+		echo "Error: user popa3d doesn't have uid=60. Correct this before installing popa3d." 1>&2
 		exit 1
 	fi
 else
-	/usr/sbin/useradd -u 60 -r -d /dev/null -s /bin/false -c "vpopmail user" -g nobody vpopmail 1>&2
+	/usr/sbin/useradd -u 60 -r -d /dev/null -s /bin/false -c "popa3d user" -g nobody popa3d 1>&2
 fi
 
 %post
@@ -91,7 +89,7 @@ if [ "$1" = "0" ]; then
 	if [ -f /var/lock/subsys/rc-inetd ]; then
 		/etc/rc.d/init.d/rc-inetd reload 1>&2
 	fi
-	/usr/sbin/userdel vpopmail
+	/usr/sbin/userdel popa3d
 fi
 
 %files
