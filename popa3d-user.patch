@@ -1,0 +1,11 @@
+--- popa3d-0.6.3/params.h.orig	Sat Apr 12 16:16:01 2003
++++ popa3d-0.6.3/params.h	Mon Apr 14 09:12:35 2003
+@@ -99,7 +99,7 @@
+  * A pseudo-user to run as before authentication. The user and its UID
+  * must not be used for any other purpose.
+  */
+-#define POP_USER			POP_SERVER
++#define POP_USER			"pop3"
+ 
+ /*
+  * An empty directory to chroot to before authentication. The directory
