@@ -1,8 +1,8 @@
 Summary:	POP3 server
 Summary(pl):	Serwer POP3
 Name:		popa3d
-Version:	0.5.1
-Release:	2
+Version:	0.6.1
+Release:	1
 License:	distributable (see LICENSE for details)
 Group:		Networking/Daemons
 Source0:	http://www.openwall.com/popa3d/%{name}-%{version}.tar.gz
