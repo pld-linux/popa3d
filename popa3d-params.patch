@@ -1,0 +1,22 @@
+--- popa3d-0.5.1/params.h.orig	Tue Oct 16 06:10:34 2001
++++ popa3d-0.5.1/params.h	Wed Jun 12 22:16:42 2002
+@@ -105,7 +105,7 @@
+  * An empty directory to chroot to before authentication. The directory
+  * and its parent directories must not be writable by anyone but root.
+  */
+-#define POP_CHROOT			"/var/empty"
++#define POP_CHROOT			"/var/lib/popa3d-empty"
+ 
+ /*
+  * Sessions will be closed if idle for longer than POP_TIMEOUT seconds.
+@@ -143,8 +143,8 @@
+  * Note that there's no built-in password aging support.
+  */
+ #define AUTH_PASSWD			0
+-#define AUTH_SHADOW			1
+-#define AUTH_PAM			0
++#define AUTH_SHADOW			0
++#define AUTH_PAM			1
+ #define AUTH_PAM_USERPASS		0
+ 
+ #if AUTH_PAM || AUTH_PAM_USERPASS

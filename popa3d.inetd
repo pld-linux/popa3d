@@ -1,0 +1,8 @@
+SERVICE_NAME=pop-3
+SOCK_TYPE=stream
+PROTOCOL=tcp
+PORT=110
+FLAGS=nowait
+USER=root
+SERVER=tcpd
+DAEMON=/usr/sbin/popa3d
