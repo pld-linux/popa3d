@@ -98,9 +98,8 @@ fi
 
 %triggerpostun -- popa3d < 0.6.3-2
 if [ "$1" != "0" ]; then
-        %{_sbindir}/userdel popa3d
+	/usr/sbin/userdel popa3d
 fi
-
 
 %files
 %defattr(644,root,root,755)
