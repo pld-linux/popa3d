@@ -2,13 +2,14 @@ Summary:	POP3 server
 Summary(pl):	Serwer POP3
 Name:		popa3d
 Version:	0.6.3
-Release:	1
+Release:	2
 License:	distributable (see LICENSE for details)
 Group:		Networking/Daemons
 Source0:	http://www.openwall.com/popa3d/%{name}-%{version}.tar.gz
 Source1:	%{name}.pamd
 Source2:	%{name}.inetd
 Patch0:		%{name}-params.patch
+Patch1:		%{name}-user.patch
 URL:		http://www.openwall.com/popa3d/
 BuildRequires:	pam-devel
 PreReq:		rc-inetd
@@ -41,6 +42,7 @@ Obs³uguje tylko skrzynki w formacie mailbox.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 %build
 %{__make} \
@@ -68,13 +70,13 @@ install %{SOURCE2} $RPM_BUILD_ROOT/etc/sysconfig/rc-inetd/popa3d
 rm -rf $RPM_BUILD_ROOT
 
 %pre
-if [ -n "`id -u popa3d 2>/dev/null`" ]; then
-	if [ "`id -u popa3d`" != "60" ]; then
-		echo "Error: user popa3d doesn't have uid=60. Correct this before installing popa3d." 1>&2
+if [ -n "`id -u pop3 2>/dev/null`" ]; then
+	if [ "`id -u pop3`" != "60" ]; then
+		echo "Error: user pop3 doesn't have uid=60. Correct this before installing pop3." 1>&2
 		exit 1
 	fi
 else
-	/usr/sbin/useradd -u 60 -r -d /dev/null -s /bin/false -c "popa3d user" -g nobody popa3d 1>&2
+	/usr/sbin/useradd -u 60 -r -d /dev/null -s /bin/false -c "pop3 user" -g nobody pop3 1>&2
 fi
 
 %post
@@ -89,8 +91,14 @@ if [ "$1" = "0" ]; then
 	if [ -f /var/lock/subsys/rc-inetd ]; then
 		/etc/rc.d/init.d/rc-inetd reload 1>&2
 	fi
-	/usr/sbin/userdel popa3d
+	/usr/sbin/userdel pop3
 fi
+
+%triggerpostun -- popa3d < 0.6.3-2
+if [ "$1" != "0" ]; then
+        %{_sbindir}/userdel popa3d
+fi
+
 
 %files
 %defattr(644,root,root,755)
