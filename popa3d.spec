@@ -13,6 +13,7 @@ Patch0:		%{name}-params.patch
 Patch1:		%{name}-user.patch
 URL:		http://www.openwall.com/popa3d/
 BuildRequires:	pam-devel
+BuildRequires:	rpmbuild(macros) >= 1.159
 PreReq:		rc-inetd
 Requires(pre):	/bin/id
 Requires(pre):	/usr/sbin/useradd
@@ -20,9 +21,10 @@ Requires(postun):	/usr/sbin/userdel
 Requires:	FHS >= 2.1-24
 Requires:	pam >= 0.77.3
 Provides:	pop3daemon
-Obsoletes:	pop3daemon
+Provides:	user(pop3)
 Obsoletes:	imap-pop
 Obsoletes:	imap-pop3
+Obsoletes:	pop3daemon
 Obsoletes:	qpopper
 Obsoletes:	qpopper6
 Conflicts:	courier-imap-pop3
@@ -93,12 +95,12 @@ if [ "$1" = "0" ]; then
 	if [ -f /var/lock/subsys/rc-inetd ]; then
 		/etc/rc.d/init.d/rc-inetd reload 1>&2
 	fi
-	/usr/sbin/userdel pop3
+	%userremove pop3
 fi
 
 %triggerpostun -- popa3d < 0.6.3-2
 if [ "$1" != "0" ]; then
-	/usr/sbin/userdel popa3d
+	%userremove popa3d
 fi
 
 %files
