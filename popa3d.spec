@@ -1,7 +1,7 @@
 Summary:	POP3 server
 Summary(pl):	Serwer POP3
 Name:		popa3d
-Version:	0.6.1
+Version:	0.6.2
 Release:	1
 License:	distributable (see LICENSE for details)
 Group:		Networking/Daemons
