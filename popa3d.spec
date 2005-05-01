@@ -13,7 +13,7 @@ Patch0:		%{name}-params.patch
 Patch1:		%{name}-user.patch
 URL:		http://www.openwall.com/popa3d/
 BuildRequires:	pam-devel
-BuildRequires:	rpmbuild(macros) >= 1.159
+BuildRequires:	rpmbuild(macros) >= 1.202
 PreReq:		rc-inetd
 Requires(pre):	/bin/id
 Requires(pre):	/usr/sbin/useradd
@@ -74,14 +74,7 @@ install %{SOURCE2} $RPM_BUILD_ROOT/etc/sysconfig/rc-inetd/popa3d
 rm -rf $RPM_BUILD_ROOT
 
 %pre
-if [ -n "`id -u pop3 2>/dev/null`" ]; then
-	if [ "`id -u pop3`" != "60" ]; then
-		echo "Error: user pop3 doesn't have uid=60. Correct this before installing pop3." 1>&2
-		exit 1
-	fi
-else
-	/usr/sbin/useradd -u 60 -r -d /dev/null -s /bin/false -c "pop3 user" -g nobody pop3 1>&2
-fi
+%useradd -u 60 -r -d /dev/null -s /bin/false -c "pop3 user" -g nobody pop3
 
 %post
 if [ -f /var/lock/subsys/rc-inetd ]; then
