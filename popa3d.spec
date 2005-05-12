@@ -2,7 +2,7 @@ Summary:	POP3 server
 Summary(pl):	Serwer POP3
 Name:		popa3d
 Version:	0.6.4.1
-Release:	2
+Release:	3
 License:	distributable (see LICENSE for details)
 Group:		Networking/Daemons
 Source0:	http://www.openwall.com/popa3d/%{name}-%{version}.tar.gz
@@ -19,7 +19,7 @@ Requires(pre):	/bin/id
 Requires(pre):	/usr/sbin/useradd
 Requires(postun):	/usr/sbin/userdel
 Requires:	FHS >= 2.1-24
-Requires:	pam >= 0.77.3
+Requires:	pam >= 0.79.0
 Provides:	pop3daemon
 Provides:	user(pop3)
 Obsoletes:	imap-pop
