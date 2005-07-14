@@ -74,7 +74,7 @@ install %{SOURCE2} $RPM_BUILD_ROOT/etc/sysconfig/rc-inetd/popa3d
 rm -rf $RPM_BUILD_ROOT
 
 %pre
-%useradd -u 60 -r -d /dev/null -s /bin/false -c "pop3 user" -g nobody pop3
+%useradd -u 60 -r -d /usr/share/empty -s /bin/false -c "pop3 user" -g nobody pop3
 
 %post
 if [ -f /var/lock/subsys/rc-inetd ]; then
