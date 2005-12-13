@@ -14,12 +14,12 @@ Patch1:		%{name}-user.patch
 URL:		http://www.openwall.com/popa3d/
 BuildRequires:	pam-devel
 BuildRequires:	rpmbuild(macros) >= 1.202
-PreReq:		rc-inetd
+Requires(postun):	/usr/sbin/userdel
 Requires(pre):	/bin/id
 Requires(pre):	/usr/sbin/useradd
-Requires(postun):	/usr/sbin/userdel
 Requires:	FHS >= 2.1-24
 Requires:	pam >= 0.79.0
+Requires:	rc-inetd
 Provides:	pop3daemon
 Provides:	user(pop3)
 Obsoletes:	imap-pop
@@ -100,7 +100,7 @@ fi
 %defattr(644,root,root,755)
 %doc DESIGN LICENSE VIRTUAL
 %attr(755,root,root) %{_sbindir}/*
-%attr(640,root,root) %config(noreplace) %verify(not size mtime md5) /etc/pam.d/popa3d
-%attr(640,root,root) %config(noreplace) %verify(not size mtime md5) /etc/security/blacklist.popa3d
-%attr(640,root,root) %config(noreplace) %verify(not size mtime md5) /etc/sysconfig/rc-inetd/popa3d
+%attr(640,root,root) %config(noreplace) %verify(not md5 mtime size) /etc/pam.d/popa3d
+%attr(640,root,root) %config(noreplace) %verify(not md5 mtime size) /etc/security/blacklist.popa3d
+%attr(640,root,root) %config(noreplace) %verify(not md5 mtime size) /etc/sysconfig/rc-inetd/popa3d
 %{_mandir}/man8/*
