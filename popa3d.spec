@@ -13,7 +13,7 @@ Patch0:		%{name}-params.patch
 Patch1:		%{name}-user.patch
 URL:		http://www.openwall.com/popa3d/
 BuildRequires:	pam-devel
-BuildRequires:	rpmbuild(macros) >= 1.202
+BuildRequires:	rpmbuild(macros) >= 1.268
 Requires(postun):	/usr/sbin/userdel
 Requires(pre):	/bin/id
 Requires(pre):	/usr/sbin/useradd
@@ -77,17 +77,11 @@ rm -rf $RPM_BUILD_ROOT
 %useradd -u 60 -r -d /usr/share/empty -s /bin/false -c "pop3 user" -g nobody pop3
 
 %post
-if [ -f /var/lock/subsys/rc-inetd ]; then
-	/etc/rc.d/init.d/rc-inetd reload 1>&2
-else
-	echo "Type \"/etc/rc.d/init.d/rc-inetd start\" to start inet server" 1>&2
-fi
+%service -q rc-inetd reload
 
 %postun
 if [ "$1" = "0" ]; then
-	if [ -f /var/lock/subsys/rc-inetd ]; then
-		/etc/rc.d/init.d/rc-inetd reload 1>&2
-	fi
+	%service -q rc-inetd reload
 	%userremove pop3
 fi
 
