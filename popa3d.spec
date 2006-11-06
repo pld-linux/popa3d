@@ -17,7 +17,7 @@ BuildRequires:	rpmbuild(macros) >= 1.268
 Requires(postun):	/usr/sbin/userdel
 Requires(pre):	/bin/id
 Requires(pre):	/usr/sbin/useradd
-Requires:	filesystem >= 3.0-11
+Requires:	filesystem >= 2.0-1
 Requires:	pam >= 0.79.0
 Requires:	rc-inetd
 Provides:	pop3daemon
