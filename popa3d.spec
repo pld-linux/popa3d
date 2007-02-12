@@ -1,5 +1,5 @@
 Summary:	POP3 server
-Summary(pl):	Serwer POP3
+Summary(pl.UTF-8):   Serwer POP3
 Name:		popa3d
 Version:	0.6.4.1
 Release:	6
@@ -38,10 +38,10 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 popa3d is a Post Office Protocol version 3 (POP3) server written by
 Solar Designer. It supports only mailbox spool format.
 
-%description -l pl
-popa3d to serwer protoko≥u Post Office Protocol w wersji 3
+%description -l pl.UTF-8
+popa3d to serwer protoko≈Çu Post Office Protocol w wersji 3
 (powszechnie znanego jako POP3), napisany przez Solar Designera.
-Obs≥uguje tylko skrzynki w formacie mailbox.
+Obs≈Çuguje tylko skrzynki w formacie mailbox.
 
 %prep
 %setup -q
