@@ -1,5 +1,5 @@
 Summary:	POP3 server
-Summary(pl.UTF-8):   Serwer POP3
+Summary(pl.UTF-8):	Serwer POP3
 Name:		popa3d
 Version:	0.6.4.1
 Release:	6
