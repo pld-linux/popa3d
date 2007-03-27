@@ -2,7 +2,7 @@ Summary:	POP3 server
 Summary(pl.UTF-8):	Serwer POP3
 Name:		popa3d
 Version:	0.6.4.1
-Release:	6
+Release:	7
 License:	distributable (see LICENSE for details)
 Group:		Networking/Daemons
 Source0:	http://www.openwall.com/popa3d/%{name}-%{version}.tar.gz
@@ -68,7 +68,7 @@ install -d $RPM_BUILD_ROOT/etc/{pam.d,sysconfig/rc-inetd,security} \
 install %{SOURCE1} $RPM_BUILD_ROOT/etc/pam.d/popa3d
 install %{SOURCE2} $RPM_BUILD_ROOT/etc/sysconfig/rc-inetd/popa3d
 
-> $RPM_BUILD_ROOT/etc/security/blacklist.popa3d
+> $RPM_BUILD_ROOT/etc/security/blacklist.pop3
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -95,6 +95,6 @@ fi
 %doc DESIGN LICENSE VIRTUAL
 %attr(755,root,root) %{_sbindir}/*
 %attr(640,root,root) %config(noreplace) %verify(not md5 mtime size) /etc/pam.d/popa3d
-%attr(640,root,root) %config(noreplace) %verify(not md5 mtime size) /etc/security/blacklist.popa3d
+%attr(640,root,root) %config(noreplace) %verify(not md5 mtime size) /etc/security/blacklist.pop3
 %attr(640,root,root) %config(noreplace) %verify(not md5 mtime size) /etc/sysconfig/rc-inetd/popa3d
 %{_mandir}/man8/*
