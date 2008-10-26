@@ -4,7 +4,7 @@ Name:		popa3d
 Version:	0.6.4.1
 Release:	7
 License:	distributable (see LICENSE for details)
-Group:		Networking/Daemons
+Group:		Networking/Daemons/POP3
 Source0:	http://www.openwall.com/popa3d/%{name}-%{version}.tar.gz
 # Source0-md5:	5e352b7eebe59f184ce0b0c4c9731c89
 Source1:	%{name}.pamd
